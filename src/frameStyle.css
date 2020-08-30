@@ -1,0 +1,157 @@
+body {
+    background-color: white;
+    overflow: hidden;
+}
+
+.frame {
+  text-align: center;
+  width: 1500px;
+  height: 1500px;
+  margin: auto;
+  padding-top: 100px;
+  background-color: white;
+}
+
+.modelFrame {
+  background-color: white;
+  height: 50%;
+  width: 50%;
+  margin: auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.clothFrame {
+  background-color: white;
+  height: 50%;
+  width: 50%;
+  margin: auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.clothOptions {
+  width: 100%;
+  background-color: white;
+  height: 90%;
+  display: block;
+  overflow-y: scroll;
+}
+
+.newButton {
+  width: 100%;
+  height: 10%;
+  background-color: white;
+  display: block;
+}
+
+.modelImg {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+  border-radius: 50px;
+}
+
+.productImgContainer {
+  width: 27%;
+  height: auto;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 10px;
+  border: 2px solid white;
+}
+
+.productImgContainerSelected {
+  width: 27%;
+  height: auto;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 10px;
+  border: 2px solid black;
+}
+
+.productImgContainer:hover {
+  border: 2px solid black;
+}
+
+.productImgContainer:click {
+  border: 2px solid black;
+}
+
+.productImg {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  border-radius: 30px;
+}
+
+.getNewModelButton {
+  width: 80%;
+  height: 70%;
+  background-color: black;
+  border-radius: 50px;
+  border: 0px;
+  margin-top: 20px;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.getNewModelButton:hover {
+  background-color: #353535;
+}
+
+.getNewModelButton:active {
+  background-color: #353535;
+}
+
+@media only screen and (max-width: 960px) {
+  .frame {
+    padding-top: 0px;
+    width: 100vw;
+    height: 85vh;
+  }
+
+  .modelFrame {
+    width: 100%;
+    height: 40%;
+    display: block;
+  }
+
+  .clothFrame {
+    width: 100%;
+    height: 55%;
+    display: block;
+  }
+
+  .clothOptions {
+    height: 70%;
+    margin-top: 20px;
+  }
+
+  .productImgContainer {
+    width: 20%;
+  }
+
+  .newButton {
+    height: 20%;
+  }
+
+  .modelImg {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    margin-top: 5%;
+    border-radius: 30px;
+  }
+
+  .getNewModelButton {
+    height: 50px;
+  }
+}
