@@ -12,7 +12,8 @@ class App extends Component {
       products: [],
       itemClass: {},
       modelFile: "",
-      selected: ""
+      selected: "",
+      isLoadingImg: false
     };
 
     this.clothClickHandler = this.clothClickHandler.bind(this);
@@ -28,6 +29,7 @@ class App extends Component {
   };
 
   fetchNewModelWithProducts() {
+    this.setState({isLoadingImg: true});
     fetch('http://3.137.127.110:4000/get_model_metadata', {
       method: "GET"
     }).then(response => response.json()).then((body) => {
@@ -37,16 +39,17 @@ class App extends Component {
       allProducts.forEach((item, i) => {
         itemClasses[item] = "productImgContainer";
       });
-      this.setState({isLoading: false, products: allProducts, itemClass: itemClasses, modelFile: modelFile, selected: ""});
+      this.setState({isLoading: false, products: allProducts, itemClass: itemClasses, modelFile: modelFile, selected: "", isLoadingImg: false});
     });
   }
 
   fetchNewModelWithSelectedProduct() {
+    this.setState({isLoadingImg: true});
     fetch('http://3.137.127.110:4000/generate_model_and_product?product_id=' + this.state.selected)
     .then(response => response.json())
     .then(body => {
       let newModelFile = body.new_model_file;
-      this.setState({modelFile: newModelFile});
+      this.setState({isLoading: false, modelFile: newModelFile, isLoadingImg: false});
     })
     .then(() => {
       fetch('http://3.137.127.110:4000/get_model_metadata?model_file=' + this.state.modelFile)
@@ -59,18 +62,20 @@ class App extends Component {
           itemClasses[item] = "productImgContainer";
         });
 
-        this.setState({isLoading: false, products: allProducts, itemClass: itemClasses, modelFile: modelFile, selected: ''});
+        this.setState({isLoading: false, products: allProducts, itemClass: itemClasses, modelFile: modelFile, selected: '', isLoadingImg: false});
       })
     });
   }
 
   fetchNewTryonModelImage(itemName, modelFile) {
+    this.setState({isLoadingImg: true});
     fetch('http://3.137.127.110:4000/generate_model_and_product?model_file=' + modelFile + '&product_id=' + itemName)
     .then(response => response.json())
     .then(body => {
       let newModelFile = body.new_model_file;
       this.setState({modelFile: newModelFile});
       this.setState({selected: itemName})
+      this.setState({isLoadingImg: false})
     });
   }
 
@@ -98,7 +103,7 @@ class App extends Component {
   }
 
   render() {
-    const {isLoading, products, itemClass, modelFile} = this.state;
+    const {isLoading, products, itemClass, modelFile, isLoadingImg} = this.state;
     if(isLoading) {
       return <p>Loading</p>
     }
@@ -121,6 +126,11 @@ class App extends Component {
           <div className="newButton">
             <Button className="getNewModelButton" onClick={this.getNewButtonHandler}>Try Another Model</Button>
           </div>
+        </div>
+        <div className={isLoadingImg ? "loadingCover" : "loadingCoverHidden"}>
+        </div>
+        <div className={isLoadingImg ? "loadingTitleContainer" : "loadingTitleContainerHidden"}>
+          <h1>Loading</h1>
         </div>
       </div>
     );
