@@ -25,7 +25,7 @@ body {
 .modelFrame {
   background-color: white;
   height: 50%;
-  width: 33.33%;
+  width: 50%;
   margin: auto;
   display: inline-block;
   text-align: center;
@@ -58,7 +58,7 @@ body {
 .modelImg {
   position: relative;
   text-align: center;
-  width: 100%;
+  width: 67%;
   height: 100%;
   margin: 0 auto;
   display: block;
@@ -194,11 +194,11 @@ body {
 
   .modelImg {
     position: relative;
-    width: 250px;
+    width: 167px;
     height: 250px;
     margin: auto;
     margin-top: 5%;
-    border-radius: 30px;
+    border-radius: 25px;
   }
 
   .getNewModelButton {
