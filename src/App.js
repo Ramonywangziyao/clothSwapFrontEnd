@@ -30,7 +30,7 @@ class App extends Component {
 
   fetchNewModelWithProducts() {
     this.setState({isLoadingImg: true});
-    fetch('http://3.137.127.110:4000/get_model_metadata', {
+    fetch('http://3.137.127.110:5000/get_model_metadata', {
       method: "GET"
     }).then(response => response.json()).then((body) => {
       let modelFile = body.model_file;
