@@ -45,14 +45,14 @@ class App extends Component {
 
   fetchNewModelWithSelectedProduct() {
     this.setState({isLoadingImg: true});
-    fetch('http://3.137.127.110:4000/generate_model_and_product?product_id=' + this.state.selected)
+    fetch('http://3.137.127.110:5000/generate_model_and_product?product_id=' + this.state.selected)
     .then(response => response.json())
     .then(body => {
       let newModelFile = body.new_model_file;
       this.setState({isLoading: false, modelFile: newModelFile, isLoadingImg: false});
     })
     .then(() => {
-      fetch('http://3.137.127.110:4000/get_model_metadata?model_file=' + this.state.modelFile)
+      fetch('http://3.137.127.110:5000/get_model_metadata?model_file=' + this.state.modelFile)
       .then(response => response.json())
       .then(body => {
         let modelFile = body.model_file;
@@ -111,7 +111,7 @@ class App extends Component {
     return (
       <div className="frame">
         <div className="modelFrame">
-          <img className="modelImg" src={"http://3.137.127.110:4000/get_image?model_file=" + modelFile} />
+          <img className="modelImg" src={"http://3.137.127.110:5000/get_image?model_file=" + modelFile} />
         </div>
         <div className="clothFrame">
           <div className="clothOptions">
